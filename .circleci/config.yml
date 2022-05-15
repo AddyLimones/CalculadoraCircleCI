@@ -5,12 +5,12 @@ jobs:
   test: # this can be any name you choose
     executor: python/default # use the default executor defined within the orb
     steps:
-      - checkout # checkout source code
       - python/install-packages:
           pkg-manager: pip
       - run:
           name: Run tests
-          command: pip install -r requireEments.txt
+          command: |
+            pip install -r requireEments.txt
             pycodestyle *.py
             coverage run --branch test_calculadora.py
             coverage report --fail-under=95
