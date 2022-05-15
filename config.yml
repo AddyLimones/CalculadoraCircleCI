@@ -1,0 +1,24 @@
+version: 2.1
+orbs:
+  python: circleci/python@2.0.3
+jobs:
+  build_and_test: # this can be any name you choose
+    executor: python/default # use the default executor defined within the orb
+    steps:
+      - checkout # checkout source code
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run tests
+          command: pip install -r requirements.txt
+          command: pycodestyle *.py
+          command: coverage run --branch test_calculadora.py
+          command: coverage report --fail-under=95
+          command: python3 test_calculadora.py
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+
+  
+
