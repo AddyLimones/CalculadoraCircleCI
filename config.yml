@@ -14,8 +14,7 @@ jobs:
           command: pycodestyle *.py
           command: coverage run --branch test_calculadora.py
           command: coverage report --fail-under=95
-          command: python -m pytest
-          command: python3 test_calculadora.py
+          command: pytest test_calculadora.py
       - persist_to_workspace:
           root: ~/project
           paths:
