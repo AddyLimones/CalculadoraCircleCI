@@ -11,11 +11,10 @@ jobs:
       - run:
           name: Run tests
           command: pip install -r requirements.txt
-          command: python -m pytest
-          command: pycodestyle *.py
-          command: coverage run --branch test_calculadora.py
-          command: coverage report --fail-under=95
-          command: pytest test_calculadora.py
+            pycodestyle *.py
+            coverage run --branch test_calculadora.py
+            coverage report --fail-under=95
+            pytest test_calculadora.py
       - persist_to_workspace:
           root: ~/project
           paths:
