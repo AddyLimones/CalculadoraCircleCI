@@ -1,25 +1,3 @@
-version: 2.1
-orbs:
-  python: circleci/python@2.0.3
-jobs:
-  test: # this can be any name you choose
-    executor: python/default # use the default executor defined within the orb
-    steps:
-      - python/install-packages:
-          pkg-manager: pip
-      - run:
-          command: |
-            pip install -r requirements.txt
-            pycodestyle *.py
-            coverage run --branch test_calculadora.py
-            coverage report --fail-under=95
-            python3 test_calculadora.py
-      - persist_to_workspace:
-          root: ~/project
-          paths:
-            - .
-
-  
 
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
@@ -32,7 +10,7 @@ orbs:
   # Orb commands and jobs help you with common scripting around a language/tool
   # so you dont have to copy and paste it everywhere.
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/python
-  python: circleci/python@1.5.0
+  python: circleci/python@2.0.3
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
