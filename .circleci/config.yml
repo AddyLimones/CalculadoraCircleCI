@@ -8,13 +8,12 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
       - run:
-          name: Run tests
           command: |
-            pip install -r requireEments.txt
+            pip install -r requirements.txt
             pycodestyle *.py
             coverage run --branch test_calculadora.py
             coverage report --fail-under=95
-            pytest test_calculadora.py
+            python3 test_calculadora.py
       - persist_to_workspace:
           root: ~/project
           paths:
